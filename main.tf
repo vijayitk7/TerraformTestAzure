@@ -1,9 +1,9 @@
 terraform {
   backend "azurerm" {
-    resource_group_name  = "test-rg"
-    storage_account_name = "storageaccountamazon"
+    resource_group_name  = "jonnychipz-infra"
+    storage_account_name = "jonnychipztstate"
     container_name       = "tstate"
-    key                  = "77Q4LUB5o9wRdbPYDt+0kGZP+L8Sj9E/FNXg7lZBQS5z3mLod5cyan4wA19CR1SmlqIRUFQfhuQrPVaGzNhjGw=="
+    key                  = "wvmgFiBIyQ66ZWZLNoBN2YufDdRnGWMpIHloay0+64vHAKkpOvyT9LMxK9JyPO0viMipUQEoE0+f+AStQlF0JQ=="
   }
 
   required_providers {
@@ -25,7 +25,7 @@ data "azurerm_client_config" "current" {}
 # Create our Resource Group - Jonnychipz-RG
 resource "azurerm_resource_group" "rg" {
   name     = "jonnychipz-app01"
-  location = "UK South"
+  location = "Japan East"
 }
 # Create our Virtual Network - Jonnychipz-VNET
 resource "azurerm_virtual_network" "vnet" {
@@ -70,7 +70,7 @@ resource "azurerm_virtual_machine" "jonnychipzvm01" {
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.vmnic.id]
-  vm_size               = "Standard_B2s"
+  vm_size               = "Standard_B1s"
   storage_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
